@@ -1,0 +1,470 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/scss/main.css">
+        <script src="assets/js/vendor/modernizr-3.6-custom.min.js"></script>
+{{--        <link href="datapicker/dist/css/datepicker.css" rel="stylesheet">--}}
+{{--        <script src="datapicker/dist/js/datepicker.js"></script>--}}
+
+        <link href="datapicker/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Include English language -->
+
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+            <!-- page-load -->
+            <!-- <div class="se-pre-con"></div> -->
+            <!-- form-modal -->
+            <div class="modal fade pr-0" id="exampleModalLabel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content p-lg-5">
+                        <div class="modal-header border-0">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <p class="font-weight-bold">
+                                لقد تم اختيار يوم الاحد الموافق 3/5/2020 ميعاد كشفك الطبي من فضلك اختار وقت الزيارة
+                            </p>
+                            <ul class="mt-4 my-model px-4 py-4">
+                                <li>
+                                    المواعيد المتاحة
+                                </li>
+                                <li>
+                                    مساءا من الساعة 7 الى 7.15
+                                </li>
+                                <li>
+                                    مساءا من الساعة 7 الى 7.15
+                                </li>
+                                <li>
+                                    مساءا من الساعة 7 الى 7.15
+                                </li>
+                                <li>
+                                    مساءا من الساعة 7 الى 7.15
+                                </li>
+                                <li>
+                                    مساءا من الساعة 7 الى 7.15
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">رجوع</button>
+                            <button type="button" class="btn btn-primary">حجز</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- video-modal -->
+            <div class="modal fade" id="exampleModalvideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalvideo" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <video class="w-100" controls>
+                              <source src="assets/img/mov_bbb.mp4" type="video/mp4">
+                              <source src="movie.ogg" type="video/ogg">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- header -->
+            <header>
+                <nav class="navbar bg-transparent">
+                    <div class="container p-0 py-md-3">
+                        <div class="brand">
+                            <img src="assets/img/brand.svg" class="img-fluid trangle" alt="Responsive image">
+                        </div>
+                        <ul class="nav">
+                          <li>
+                            <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                          </li>
+                          <li>
+                              <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                          </li>
+                          <li>
+                             <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
+                                <i class="fab fa-google"></i>
+                            </a>
+                          </li>
+                          <li>
+                              <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </a>
+                          </li>
+                        </ul>
+                    </div>
+                </nav>
+                <section class="doctor">
+                    <div class="container mycontainer d-flex align-items-center h-100">
+                        <div class="row doc-row h-100">
+                            <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center text-md-right">
+                                <div class="row">
+                                    <div class="col-12 text-center text-lg-right my-image d-lg-none">
+                                        <img src="assets/img/personal.png" class="rounded-circle" alt="Responsive image" data-aos="zoom-in">
+                                    </div>
+                                    <div class="col-12 text-center text-lg-right text-white mt-4 make-space">
+                                        <h4>د/ محمد نجيب الصيرة </h4>
+                                        <h5>استشارى الباطنة العامة </h5>
+                                        <p>
+                                            مول اباظة - الدور الثانى بجوار التوحيد والنور
+                                            مسجد الحصرى مدينة 6 أكتوبر - الجيزة
+                                        </p>
+                                        <button type="button" class="btn btn-primary fly-btn mt-1 d-flex align-items-center justify-content-center">
+                                           <p class="d-none d-lg-block m-0 ml-3"> للتواصل </p>
+                                            <i class="fas fa-phone-alt"></i>
+                                            <!-- <i class="fas fa-phone"></i> -->
+                                        </button>
+                                    </div>
+                                    <div class="col-12 mt-4 d-md-none">
+                                        <a href="#" class="w-100 mr-auto ml-auto down">
+                                            <div id="mouse-scroll">
+                                              <div class="mouse">
+                                                <div class="mouse-in"></div>
+                                              </div>
+                                              <div class="text-white mt-1">
+                                                  تصفح للاسفل
+                                               </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-none d-lg-block col-lg-6">
+                                <img src="assets/img/bigimage.svg" class="img-fluid doc-big-image" alt="Responsive image">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </header>
+            <!-- form -->
+            <section class="form py-4" data-aos="fade-up">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-10 offset-lg-1">
+                            <div class="form-box text-center w-md-50 mr-md-auto ml-md-auto">
+                               <h4 class="font-weight-bold">احجز كشفك الان </h4>
+                                <p class="mb-0 text-center text-dark">
+                                    سعر الكشف 200جنية
+                                        <i class="fas fa-money-bill-wave mr-2"></i>
+                                </p>
+                                <p class="mb-0 text-center text-dark">
+                                   ايام العمل : من السبت الى الخميس
+                                </p>
+                                <p class="mb-0 text-center text-dark">
+                                   ساعات العمل من الساعة 4 الى الساعة 10
+                                </p>
+                                <p class="mt-3 font-weight-bold text-center text-dark mt-5">بيانات المريض </p>
+                                <form action="{{ route('appoinment.store') }}" method="post">
+                                    {{ csrf_field() }}
+                                    <div class="mb-3">
+                                        <input type="text"  name="name" class="form-control" placeholder="اسم المريض " aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" name="phone" class="form-control" placeholder="تليفون المريض " aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" name="email" class="form-control" placeholder="ايميل المريض ( اختيارى)"aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+
+                                    <div id="disabled-days"></div>
+
+                                    <div class="book-btn mt-4 mt-lg-5 pt-lg-3">
+                                        <button type="button" class="btn form-button ml-auto mr-auto" data-toggle="modal" data-target="#exampleModalLabel">
+                                              حجز
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- service -->
+            <section class="service">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6 mb-lg-5">
+                            <div class="service-box text-white text-center" data-aos="flip-left">
+                                <img src="assets/img/blood.svg" class="img-fluid w-25" alt="Responsive image">
+                                <p class="mt-3"> علاج امراض القلب </p>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-lg-5">
+                            <div class="service-box text-white text-center" data-aos="flip-right">
+                                <img src="assets/img/stomach.svg" class="img-fluid w-25" alt="Responsive image">
+                                <p class="mt-3"> علاج امراض الجهاز الهضمى </p>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-lg-5">
+                            <div class="service-box text-white text-center" data-aos="flip-left">
+                                <img src="assets/img/bladder.svg" class="img-fluid w-25" alt="Responsive image">
+                                <p class="mt-3"> علاج امراض الجهاز البولى</p>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-lg-5">
+                            <div class="service-box text-white text-center" data-aos="flip-right">
+                                <img src="assets/img/respiratory-system (1).svg" class="img-fluid w-25" alt="Responsive image">
+                                <p class="mt-3"> علاج امراض الجهاز التنفسي</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- video -->
+            <section class="myvideo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="video-box text-center w-100" data-aos="zoom-in">
+                                <h6 class="text-dark font-weight-bold mb-3 mb-lg-5">فوائد واضرار الكريسترول </h6>
+                                <div class="position-relative">
+                                    <button class="border-0 p-0" data-toggle="modal" data-target="#exampleModalvideo">
+                                        <img src="assets/img/1.png " class="img-fluid video-img" alt="Responsive image">
+                                    <div class="icon position-absolute text-center">
+                                        <img src="assets/img/play.png" class="img-fluid" alt="Responsive image">
+                                    </div>
+                                    </button>
+
+                                </div>
+                                <div class="modal fade" id="exampleModalvideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        ...
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- slider -->
+            <section class="slider py-5 text-center">
+                <h6 class="text-dark font-weight-bold mb-3 mb-lg-5">مقالات</h6>
+                <div class="container-fluid position-relative">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img src="assets/img/health.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="card">
+                                  <img src="assets/img/health.jpg" class="card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="card">
+                                  <img src="assets/img/health.jpg" class="card-img-top" alt="...">
+                                  <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next d-none d-md-block"></div>
+                        <div class="swiper-button-prev d-none d-md-block"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- footer -->
+            <footer class="py-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-4 text-md-center">
+                            <div class="brand">
+                                <img src="assets/img/brand.svg" class="img-fluid trangle" alt="Responsive image">
+                            </div>
+                            <h4 class=" mt-2 mb-0"> د/كتور محمد نجيب الصيرة </h4>
+                            <p class="job">استاذ الباطنة العامة </p>
+                            <div>
+                                <button type="button" class="btn btn-primary mt-3">
+                                    للتواصل
+                                    <i class="fas fa-phone-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 text-md-center">
+                            <ul class="discraption m-0 p-0">
+                                <li>
+                                    للتعديل على الحجز
+                                </li>
+                                <li>
+                                    <i class="fas fa-phone"></i>
+                                    / 01068801080
+                                </li>
+                                <li>
+                                    <i class="far fa-envelope"></i>
+                                    / mahmoudelshserfe@gmail.com
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4 mt-5 text-md-center">
+                            <p class="title">للتواصل معنا على </p>
+                            <ul class="social m-0">
+                                <li>
+                                    <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
+                                        <i class="fab fa-google"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        <!-- scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="datapicker/dist/js/i18n/datepicker.en.js"></script>
+        <script src="datapicker/dist/js/datepicker.min.js"></script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <script src="assets/js/plugins.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+        <script src="https://unpkg.com/swiper/js/swiper.js"></script>
+        <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <!-- <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script> -->
+        <script>
+            // Make Sunday and Saturday disabled
+            var disabledDays = [0, 6];
+
+            $('#disabled-days').datepicker({
+                language: 'en',
+                minDate: new Date(),
+                onRenderCell: function (date, cellType) {
+                    if (cellType == 'day') {
+                        var day = date.getDay(),
+                            isDisabled = disabledDays.indexOf(day) != -1;
+
+                        return {
+                            disabled: isDisabled
+                        }
+                    }
+                }
+            })
+        </script>
+         <script>
+            var swiper = new Swiper('.swiper-container', {
+                autoplay: {
+                    delay: 2000,
+                },
+                slidesPerView: 'auto',
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+              },
+              breakpoints: {
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 30,
+                },
+              }
+            });
+        </script>
+        <script>
+            $(window).load(function() {
+              // Animate loader off screen
+               $(".se-pre-con").delay(1500).fadeOut(400);
+            });
+        </script>
+
+          <script>
+            AOS.init();
+          </script>
+          <script>
+              $(document).ready(function() {
+                $(".down").click(function() {
+                     $('html, body').animate({
+                         scrollTop: $(".up").offset().top
+                     }, 1500);
+                 });
+                });
+          </script>
+          <script>
+               function scrollWin() {
+                  window.scrollBy(0, 500);
+                }
+          </script>
+
+
+    </body>
+</html>
