@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('send/appoinment', 'AppoinmentController@store');
+Route::get('get/time','AppoinmentController@getTime');
+
+//ADMIN
+Route::get('admin','Admin/AppoinmentController@addScdule');
+Route::get('admin',function(){
+   return view('admin.index');
+});
+Route::resource('admin/settings','Admin\SettingController');
+

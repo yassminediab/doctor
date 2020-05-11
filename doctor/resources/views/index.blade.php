@@ -24,6 +24,7 @@
 
         <link href="datapicker/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
 
+
         <!-- Include English language -->
 
     </head>
@@ -43,34 +44,12 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body text-center">
-                            <p class="font-weight-bold">
-                                لقد تم اختيار يوم الاحد الموافق 3/5/2020 ميعاد كشفك الطبي من فضلك اختار وقت الزيارة
-                            </p>
-                            <ul class="mt-4 my-model px-4 py-4">
-                                <li>
-                                    المواعيد المتاحة
-                                </li>
-                                <li>
-                                    مساءا من الساعة 7 الى 7.15
-                                </li>
-                                <li>
-                                    مساءا من الساعة 7 الى 7.15
-                                </li>
-                                <li>
-                                    مساءا من الساعة 7 الى 7.15
-                                </li>
-                                <li>
-                                    مساءا من الساعة 7 الى 7.15
-                                </li>
-                                <li>
-                                    مساءا من الساعة 7 الى 7.15
-                                </li>
-                            </ul>
+                        <div class="modal-body text-center" id="result">
+
                         </div>
                         <div class="modal-footer border-0">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">رجوع</button>
-                            <button type="button" class="btn btn-primary">حجز</button>
+                            <button type="button" class="btn btn-primary" id="sendAppoinment">حجز</button>
                         </div>
                     </div>
                 </div>
@@ -166,6 +145,7 @@
                     </div>
                 </section>
             </header>
+
             <!-- form -->
             <section class="form py-4" data-aos="fade-up">
                 <div class="container">
@@ -184,22 +164,22 @@
                                    ساعات العمل من الساعة 4 الى الساعة 10
                                 </p>
                                 <p class="mt-3 font-weight-bold text-center text-dark mt-5">بيانات المريض </p>
-                                <form action="{{ route('appoinment.store') }}" method="post">
+                                <form action="" method="post">
                                     {{ csrf_field() }}
                                     <div class="mb-3">
-                                        <input type="text"  name="name" class="form-control" placeholder="اسم المريض " aria-label="Username" aria-describedby="basic-addon1">
+                                        <input type="text" id="name" name="name" class="form-control" placeholder="اسم المريض " aria-label="Username" aria-describedby="basic-addon1">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" name="phone" class="form-control" placeholder="تليفون المريض " aria-label="Username" aria-describedby="basic-addon1">
+                                        <input type="text" id="phone" name="phone" class="form-control" placeholder="تليفون المريض " aria-label="Username" aria-describedby="basic-addon1">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="text" name="email" class="form-control" placeholder="ايميل المريض ( اختيارى)"aria-label="Username" aria-describedby="basic-addon1">
+                                        <input type="text" id="email" name="email" class="form-control" placeholder="ايميل المريض ( اختيارى)"aria-label="Username" aria-describedby="basic-addon1">
                                     </div>
 
-                                    <div id="disabled-days"></div>
+                                    <div id="disabled-days" data-language='en'></div>
 
                                     <div class="book-btn mt-4 mt-lg-5 pt-lg-3">
-                                        <button type="button" class="btn form-button ml-auto mr-auto" data-toggle="modal" data-target="#exampleModalLabel">
+                                        <button type="button" class="btn form-button ml-auto mr-auto" id="getTime" data-url="{{ url('send/appoinment') }}" data-gettime="{{ url('get/time') }}">
                                               حجز
                                         </button>
                                     </div>
@@ -256,25 +236,28 @@
                                     </button>
 
                                 </div>
-                                <div class="modal fade" id="exampleModalvideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        ...
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
+{{--                                <div class="modal fade" id="exampleModalvideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
+{{--                                      <div class="modal-dialog" role="document">--}}
+{{--                                            <div class="modal-content">--}}
+{{--                                                  <div class="modal-header">--}}
+{{--                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>--}}
+{{--                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                                                          <span aria-hidden="true">&times;</span>--}}
+{{--                                                        </button>--}}
+{{--                                                      </div>--}}
+{{--                                                  <div class="modal-body">--}}
+{{--                                                    ...--}}
+{{--                                                  </div>--}}
+
+{{--                                                  <div class="modal-footer">--}}
+{{--                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
+{{--                                                    <button type="button" class="btn btn-primary">Save changes</button>--}}
+{{--                                                  </div>--}}
+
+{{--                                             </div>--}}
+{{--                                      </div>--}}
+{{--                                </div>--}}
+
                             </div>
                         </div>
                     </div>
@@ -381,8 +364,8 @@
         <!-- scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="datapicker/dist/js/i18n/datepicker.en.js"></script>
         <script src="datapicker/dist/js/datepicker.min.js"></script>
+        <script src="datapicker/dist/js/i18n/datepicker.en.js"></script>
 
 
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -405,10 +388,14 @@
         <script>
             // Make Sunday and Saturday disabled
             var disabledDays = [0, 6];
-
+            var d = new Date();
+            var currMonth = d.getMonth() ;
+            var currYear = d.getFullYear();
+            var startDate = new Date(currYear, currMonth, 1);
+            $("#datepicker").datepicker("setDate", startDate);
             $('#disabled-days').datepicker({
                 language: 'en',
-                minDate: new Date(),
+                minDate: d,
                 onRenderCell: function (date, cellType) {
                     if (cellType == 'day') {
                         var day = date.getDay(),
@@ -464,7 +451,51 @@
                   window.scrollBy(0, 500);
                 }
           </script>
+       <script>
+               $("#getTime").click(function() {
+                   var url = $(this).data("gettime");
+                   $.ajax({
+                   type: "GET",
+                   url: url,
+                   data: {
+                       'day' : jQuery('.-selected-').data('date'),
+                       'month' : jQuery('.-selected-').data('month'),
+                       'year' : jQuery('.-selected-').data('year'),
+                   },
+                   success: function (data) {
+                       $('#exampleModalLabel').modal('show');
+                       $('#result').html(data);
+                   },
+                   error: function (request, error) {
+                       alert("there is some error");
+                   }
 
+               });
+           });
+
+           $("#sendAppoinment").click(function() {
+               var url = $(this).data("url");
+               $.ajax({
+                   type: "GET",
+                   url: url,
+                   data: {
+                       'name': $('#name').val(),
+                       'phone': $('#phone').val(),
+                       'email': $('#email').val(),
+                       'day' : jQuery('.-selected-').data('date'),
+                       'month' : jQuery('.-selected-').data('month'),
+                       'year' : jQuery('.-selected-').data('year'),
+                   },
+                   success: function (data) {
+                       $('#exampleModalLabel').modal('show');
+                   },
+                   error: function (request, error) {
+                       alert("there is some error");
+                   }
+
+               });
+           });
+       </script>
 
     </body>
 </html>
