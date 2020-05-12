@@ -49,7 +49,7 @@
                         </div>
                         <div class="modal-footer border-0">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">رجوع</button>
-                            <button type="button" class="btn btn-primary" id="sendAppoinment">حجز</button>
+                            <button type="button" class="btn btn-primary" id="sendAppoinment" data-url="{{ url('send/appoinment') }}">حجز</button>
                         </div>
                     </div>
                 </div>
@@ -165,6 +165,8 @@
                                 </p>
                                 <p class="mt-3 font-weight-bold text-center text-dark mt-5">بيانات المريض </p>
                                 <form action="" method="post">
+                                    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+
                                     {{ csrf_field() }}
                                     <div class="mb-3">
                                         <input type="text" id="name" name="name" class="form-control" placeholder="اسم المريض " aria-label="Username" aria-describedby="basic-addon1">
@@ -177,9 +179,9 @@
                                     </div>
 
                                     <div id="disabled-days" data-language='en'></div>
-
+                                    <input type="hidden" name="time" id="time">
                                     <div class="book-btn mt-4 mt-lg-5 pt-lg-3">
-                                        <button type="button" class="btn form-button ml-auto mr-auto" id="getTime" data-url="{{ url('send/appoinment') }}" data-gettime="{{ url('get/time') }}">
+                                        <button type="button" class="btn form-button ml-auto mr-auto" id="getTime"  data-gettime="{{ url('get/time') }}">
                                               حجز
                                         </button>
                                     </div>
@@ -473,10 +475,14 @@
                });
            });
 
+           function timeSelected(time){
+               $('#time').val(time);
+           }
+
            $("#sendAppoinment").click(function() {
                var url = $(this).data("url");
                $.ajax({
-                   type: "GET",
+                   type: "POST",
                    url: url,
                    data: {
                        'name': $('#name').val(),
@@ -485,16 +491,22 @@
                        'day' : jQuery('.-selected-').data('date'),
                        'month' : jQuery('.-selected-').data('month'),
                        'year' : jQuery('.-selected-').data('year'),
+                       'time' : $('#time').val(),
+                       '_token' : $('#csrf-token').val(),
+
                    },
                    success: function (data) {
-                       $('#exampleModalLabel').modal('show');
+                       $('#exampleModalLabel').modal('hide');
                    },
                    error: function (request, error) {
-                       alert("there is some error");
+                       alert(error);
                    }
 
                });
            });
+
+
+
        </script>
 
     </body>

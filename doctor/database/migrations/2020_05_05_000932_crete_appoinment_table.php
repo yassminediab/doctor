@@ -16,7 +16,7 @@ class CreteAppoinmentTable extends Migration
         Schema::create('Appointment', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->text('email');
+            $table->text('email')->nullable();
             $table->text('phone');
             $table->date('date');
             $table->time('time_to');

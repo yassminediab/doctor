@@ -10,7 +10,7 @@
         المواعيد المتاحة
     </li>
     @foreach($freeTime as $time)
-    <li>
+    <li onclick="timeSelected('{{$time}}')">
         {{$time}}
     </li>
    @endforeach

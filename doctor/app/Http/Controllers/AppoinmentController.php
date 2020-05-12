@@ -9,16 +9,19 @@ use Illuminate\Http\Request;
 use App\AppoinmetSchduale;
 class AppoinmentController extends Controller
 {
-    public function store(AppoinmentRequest $request)
+    public function store(Request $request)
     {
-        $date = $request->year . '-' . $request->month + 1 . '-' . $request->day;
-        Appointment::create([
+        $date = Carbon::create($request->year, $request->month, $request->day);
+        $date->addMonth(1);
+        $appointment = Appointment::create([
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
-            'date' => $date,
+            'date' => $date->toDateString(),
+            'time_to' => explode("-", $request->time)[1],
+            'time_from' => explode("-", $request->time)[0],
         ]);
-        dd($request->all());
+       return 1;
     }
 
 
@@ -28,7 +31,7 @@ class AppoinmentController extends Controller
         $date->addMonth(1);
         $dayNumber = $date->dayOfWeek;
 
-        $appoinmentSchdule = Appointment::where(['date' => $date->toDateString() , 'approved' => 1])->get(); // kol eel 7ogozat bta3t el date dh
+        $appoinmentSchdule = Appointment::where(['date' => $date->toDateString(), 'approved' => true])->get(); // kol eel 7ogozat bta3t el date dh
         $seetings = AppoinmetSchduale::where('day_number',$dayNumber)->first();
 
         $freeAppointment = [];

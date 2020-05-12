@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('send/appoinment', 'AppoinmentController@store');
+Route::post('send/appoinment', 'AppoinmentController@store');
 Route::get('get/time','AppoinmentController@getTime');
 
 //ADMIN
