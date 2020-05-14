@@ -179,6 +179,20 @@
                                     <li><a href="{{ url('admin/settings') }}">view settings</a></li>
                                 </ul>
                             </li>
+
+                            <li>
+                                <a href="#"><i class="icon-stack2"></i> <span>Appointments</span></a>
+                                <ul>
+                                    <li><a href="{{ url('admin/appointments') }}">view In Progress Appointments</a></li>
+                                    <li><a href="{{ url('admin/appointments/cancel') }}">view Canceled Appointments</a></li>
+                                    <li><a href="{{ url('admin/appointments/done') }}">view Done Appointments</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="icon-stack2"></i> <span>blogs</span></a>
+                                <ul>
+                                    <li><a href="{{ url('admin/blogs') }}">view blogs</a></li>
                                 </ul>
                             </li>
                         </ul>

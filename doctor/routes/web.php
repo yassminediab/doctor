@@ -26,4 +26,14 @@ Route::get('admin',function(){
    return view('admin.index');
 });
 Route::resource('admin/settings','Admin\SettingController');
+Route::get('admin/appointments', 'Admin\AppoinmentController@index');
+Route::get('admin/appointments/cancel', 'Admin\AppoinmentController@CanceledAppointment');
+Route::get('admin/appointments/done', 'Admin\AppoinmentController@DoneAppointment');
+Route::get('admin/appointments/cancel/{id}', 'Admin\AppoinmentController@DoCancelAppointments');
+Route::get('admin/appointments/approve/{id}', 'Admin\AppoinmentController@DoApproveppointments');
+Route::get('admin/appointments/{id}/edit', 'Admin\AppoinmentController@edit');
+Route::post('admin/appointments/store/{id}', 'Admin\AppoinmentController@store');
+Route::resource('admin/blogs','Admin\BlogsController');
+Route::get('admin/blogs/delete/{id}', 'Admin\BlogsController@delete');
+Route::post('admin/blogs/update/{id}', 'Admin\BlogsController@update');
 
