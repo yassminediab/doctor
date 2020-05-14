@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
     return view('index');
 });
@@ -21,19 +21,21 @@ Route::post('send/appoinment', 'AppoinmentController@store');
 Route::get('get/time','AppoinmentController@getTime');
 
 //ADMIN
-Route::get('admin','Admin/AppoinmentController@addScdule');
-Route::get('admin',function(){
-   return view('admin.index');
+
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/',function(){
+        return view('admin.index');
+    });
+    Route::resource('settings','Admin\SettingController');
+    Route::get('appointments', 'Admin\AppoinmentController@index');
+    Route::get('appointments/cancel', 'Admin\AppoinmentController@CanceledAppointment');
+    Route::get('appointments/done', 'Admin\AppoinmentController@DoneAppointment');
+    Route::get('appointments/cancel/{id}', 'Admin\AppoinmentController@DoCancelAppointments');
+    Route::get('appointments/approve/{id}', 'Admin\AppoinmentController@DoApproveppointments');
+    Route::get('appointments/{id}/edit', 'Admin\AppoinmentController@edit');
+    Route::post('appointments/store/{id}', 'Admin\AppoinmentController@store');
+    Route::resource('blogs','Admin\BlogsController');
+    Route::get('blogs/delete/{id}', 'Admin\BlogsController@delete');
+    Route::post('blogs/update/{id}', 'Admin\BlogsController@update');
 });
-Route::resource('admin/settings','Admin\SettingController');
-Route::get('admin/appointments', 'Admin\AppoinmentController@index');
-Route::get('admin/appointments/cancel', 'Admin\AppoinmentController@CanceledAppointment');
-Route::get('admin/appointments/done', 'Admin\AppoinmentController@DoneAppointment');
-Route::get('admin/appointments/cancel/{id}', 'Admin\AppoinmentController@DoCancelAppointments');
-Route::get('admin/appointments/approve/{id}', 'Admin\AppoinmentController@DoApproveppointments');
-Route::get('admin/appointments/{id}/edit', 'Admin\AppoinmentController@edit');
-Route::post('admin/appointments/store/{id}', 'Admin\AppoinmentController@store');
-Route::resource('admin/blogs','Admin\BlogsController');
-Route::get('admin/blogs/delete/{id}', 'Admin\BlogsController@delete');
-Route::post('admin/blogs/update/{id}', 'Admin\BlogsController@update');
 
