@@ -18,25 +18,29 @@
             </div>
 
             <div class="panel-body">
-                <form class="form-horizontal" action="{{ url('admin/blogs/update/'.$blog->id) }}" method="post">
+                <form class="form-horizontal" action="{{ url('admin/blogs/update/'.$blog->id) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$blog->id}}">
                     <div class="form-group">
                         <label class="control-label col-lg-2">title</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" name="title" placeholder="enter title" value="{{ old('title') }}">
+                            <input type="text" class="form-control" name="title" placeholder="enter title" value="{{$blog->title}}">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-lg-2">description</label>
                         <div class="col-lg-10">
-                            <textarea type="text" rows="5" cols="5" class="form-control" name="description" value="{{ old('description') }} placeholder="enter description"></textarea>
+                            <textarea type="text" rows="5" cols="5" class="form-control" name="description" placeholder="enter description">
+                                {{$blog->description}}
+                            </textarea>
                         </div>
                     </div>
-
+                    @if($blog->image)
+                       <img src="{{asset('images/'.$blog->image)}}" width="20%" height="50%" style="margin-left: 10%;">
+                     @endif
                     <div class="form-group">
-                        <label class="control-label col-lg-2">image</label>
+                        <label class="control-label col-lg-2">change image</label>
                         <div class="col-lg-10">
                             <input type="file" class="form-control" name="file">
                         </div>

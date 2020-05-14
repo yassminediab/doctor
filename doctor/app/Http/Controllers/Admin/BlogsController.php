@@ -48,8 +48,16 @@ class BlogsController extends Controller
     }
 
     public function update(Request $request)
-    {dd($request->all());
-        $data = $request->except('_token');
+    {
+      //  dd($request->all());
+        $data = [];
+        $data = $request->except('_token','file');
+        if($request->file)
+        {
+            $imageName = time().'.'.request()->file->getClientOriginalExtension();
+            request()->file->move(public_path('images'), $imageName);
+            $data['image'] = $imageName;
+        }
         Blog::where('id', $request->id)->update($data);
         return redirect('/admin/blogs')->with('success', 'updated Successfully!');
     }
@@ -57,6 +65,6 @@ class BlogsController extends Controller
     public function delete($id)
     {
         Blog::find($id)->delete();
-        return redirect('/admin/blogs')->with('success', 'delete Successfully!');
+        return redirect('/admin/blogs')->with('success', 'deleted Successfully!');
     }
 }

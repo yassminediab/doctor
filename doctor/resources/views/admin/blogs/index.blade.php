@@ -47,7 +47,7 @@
                                     </a>
                                 </li>
                                 <li class="text-danger-600">
-                                    <a href="{{ url('admin/blogs/delete'.$blog->id) }}">
+                                    <a href="{{ url('admin/blogs/delete/'.$blog->id) }}">
                                         <i class="icon-trash"></i>
                                     </a>
                                 </li>
