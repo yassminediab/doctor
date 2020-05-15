@@ -85,13 +85,13 @@
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                           </li>
+
                           <li>
                               <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
                                 <i class="fab fa-youtube"></i>
                             </a>
-                          </li>                                sdfsdfsdf
-
-                          <li>
+                          </li>
+                            <li>
                              <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
                                 <i class="fab fa-google"></i>
                             </a>

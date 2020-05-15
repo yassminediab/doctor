@@ -24,6 +24,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/',function(){
         return view('admin.index');
     });
+    Route::post('logout','Auth\LoginController@logout')->name('logout');
     Route::resource('settings','Admin\SettingController');
     Route::get('appointments', 'Admin\AppoinmentController@index');
     Route::get('appointments/cancel', 'Admin\AppoinmentController@CanceledAppointment');
