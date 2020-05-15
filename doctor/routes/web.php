@@ -37,5 +37,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('blogs','Admin\BlogsController');
     Route::get('blogs/delete/{id}', 'Admin\BlogsController@delete');
     Route::post('blogs/update/{id}', 'Admin\BlogsController@update');
+    Route::get('link','Admin\LinkController@index');
+    Route::get('link/{id}/edit', 'Admin\LinkController@edit');
+    Route::post('link/update/{id}', 'Admin\LinkController@update');
 });
 

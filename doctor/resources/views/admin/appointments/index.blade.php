@@ -22,7 +22,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table">
+                <table class="table datatable-responsive">
                     <thead>
                     <tr>
                         <th>name</th>

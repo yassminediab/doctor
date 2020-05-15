@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Blog;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AppoinmentRequest;
 use App\Http\Requests\BlogsRequest;
-use App\Http\Requests\SettingsRequest;
 use Illuminate\Http\Request;
-use App\AppoinmetSchduale;
 use DB;
 
 class BlogsController extends Controller
@@ -49,7 +46,6 @@ class BlogsController extends Controller
 
     public function update(Request $request)
     {
-      //  dd($request->all());
         $data = [];
         $data = $request->except('_token','file');
         if($request->file)

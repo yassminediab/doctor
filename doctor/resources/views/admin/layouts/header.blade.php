@@ -24,9 +24,15 @@
 
     <!-- Theme JS files -->
     <script type="text/javascript" src="{{ asset('admin_design/assets/js/plugins/tables/footable/footable.min.js') }}"></script>
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="{{ asset('admin_design/assets/js/plugins/tables/datatables/datatables.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('admin_design/assets/js/plugins/tables/datatables/extensions/responsive.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('admin_design/assets/js/plugins/forms/selects/select2.min.js')}}"></script>
 
     <script type="text/javascript" src="{{ asset('admin_design/assets/js/core/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('admin_design/assets/js/pages/table_responsive.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admin_design/assets/js/pages/datatables_responsive.js')}}"></script>
+
     <!-- /theme JS files -->
 
 </head>
@@ -193,6 +199,13 @@
                                 <a href="#"><i class="icon-stack2"></i> <span>blogs</span></a>
                                 <ul>
                                     <li><a href="{{ url('admin/blogs') }}">view blogs</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="icon-stack2"></i> <span>link </span></a>
+                                <ul>
+                                    <li><a href="{{ url('admin/link') }}">view link</a></li>
                                 </ul>
                             </li>
                         </ul>
