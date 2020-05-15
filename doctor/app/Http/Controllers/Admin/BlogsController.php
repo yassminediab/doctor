@@ -16,7 +16,10 @@ class BlogsController extends Controller
             'blogs' => Blog::all()
         ]);
     }
-
+    public function show($id)
+    {
+        return Blog::find($id)->description;
+    }
     public function create()
     {
         return view('admin.blogs.create');

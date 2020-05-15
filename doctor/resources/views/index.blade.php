@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
         <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
          <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <link rel="stylesheet" href="assets/scss/main.css">
+        <link rel="stylesheet" href="assets/css/main.css">
         <script src="assets/js/vendor/modernizr-3.6-custom.min.js"></script>
 {{--        <link href="datapicker/dist/css/datepicker.css" rel="stylesheet">--}}
 {{--        <script src="datapicker/dist/js/datepicker.js"></script>--}}
@@ -89,7 +89,8 @@
                               <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
                                 <i class="fab fa-youtube"></i>
                             </a>
-                          </li>
+                          </li>                                sdfsdfsdf
+
                           <li>
                              <a class=" d-flex align-items-center justify-content-center text-white w-100 h-100" href="#">
                                 <i class="fab fa-google"></i>
@@ -279,7 +280,10 @@
                                 <div class="card">
                                     <img src="{{ asset('images/'.$blog->image) }}" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <p class="card-text"> {{ \Str::limit(Strip_tags($blog->description), $limit = 50, $end = '...')  }}</p>
+                                        <p class="card-text" > {{ \Str::limit(Strip_tags($blog->description), $limit = 50, $end = '...')  }}
+                                        </p>
+{{--                                        <a id="blogModel" data-id="{{$blog->id}}" data-blogUrl="{{url('admin/blogs/'.$blog->id)}}">more</a>--}}
+
                                     </div>
                                 </div>
                             </div>
@@ -443,6 +447,24 @@
                 }
           </script>
        <script>
+           $("#blogModel").click(function () {
+               var url = $(this).data("blogUrl");
+
+               $.ajax({
+                   type: "GET",
+                   url: url,
+                   data: {
+                       'id' :  $(this).data("id"),
+                   },
+                   success: function (data) {
+                       $('#exampleModalLabel').modal('show');
+                       $('#result').html(data);
+                   },
+                   error: function (request, error) {
+                       alert(request);
+                   }
+               });
+           });
                $("#getTime").click(function() {
                    if($('#name').val() == '')
                    {
