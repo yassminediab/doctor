@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Appointment;
 use App\Http\Requests\AppoinmentRequest;
+use App\Mail\AppointmentMail;
+use App\Mail\ContactMail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\AppoinmetSchduale;
+use Mail;
+
 class AppoinmentController extends Controller
 {
     public function store(Request $request)
@@ -21,7 +25,9 @@ class AppoinmentController extends Controller
             'time_to' => explode("-", $request->time)[1],
             'time_from' => explode("-", $request->time)[0],
         ]);
-       return 1;
+        Mail::to(env('ADMIN_MAIL'))->queue(new AppointmentMail($appointment));
+
+        return 1;
     }
 
 

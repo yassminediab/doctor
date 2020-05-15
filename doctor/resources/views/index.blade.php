@@ -170,9 +170,12 @@
                                     {{ csrf_field() }}
                                     <div class="mb-3">
                                         <input type="text" id="name" name="name" class="form-control" placeholder="اسم المريض " aria-label="Username" aria-describedby="basic-addon1">
+                                        <p id="error-name" style="color: red" class="d-none">لابد من ادخال الاسم</p>
                                     </div>
                                     <div class="mb-3">
                                         <input type="text" id="phone" name="phone" class="form-control" placeholder="تليفون المريض " aria-label="Username" aria-describedby="basic-addon1">
+                                        <p id="error-phone" style="color: red" class="d-none">لابد من ادخال رقم الهاتف</p>
+
                                     </div>
                                     <div class="mb-3">
                                         <input type="text" id="email" name="email" class="form-control" placeholder="ايميل المريض ( اختيارى)"aria-label="Username" aria-describedby="basic-addon1">
@@ -271,30 +274,16 @@
                 <div class="container-fluid position-relative">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
+                            @foreach($blogs as $blog)
                             <div class="swiper-slide">
                                 <div class="card">
-                                    <img src="assets/img/health.jpg" class="card-img-top" alt="...">
+                                    <img src="{{ asset('images/'.$blog->image) }}" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text"> {{ \Str::limit(Strip_tags($blog->description), $limit = 50, $end = '...')  }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="card">
-                                  <img src="assets/img/health.jpg" class="card-img-top" alt="...">
-                                  <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card">
-                                  <img src="assets/img/health.jpg" class="card-img-top" alt="...">
-                                  <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  </div>
-                                </div>
-                            </div>
+                           @endforeach
                         </div>
                         <!-- Add Arrows -->
                         <div class="swiper-button-next d-none d-md-block"></div>
@@ -455,24 +444,38 @@
           </script>
        <script>
                $("#getTime").click(function() {
-                   var url = $(this).data("gettime");
-                   $.ajax({
-                   type: "GET",
-                   url: url,
-                   data: {
-                       'day' : jQuery('.-selected-').data('date'),
-                       'month' : jQuery('.-selected-').data('month'),
-                       'year' : jQuery('.-selected-').data('year'),
-                   },
-                   success: function (data) {
-                       $('#exampleModalLabel').modal('show');
-                       $('#result').html(data);
-                   },
-                   error: function (request, error) {
-                       alert("there is some error");
+                   if($('#name').val() == '')
+                   {
+                       $('#error-name').removeClass('d-none');
+                   }
+                   if($('#phone').val() == '')
+                   {
+                       $('#error-phone').removeClass('d-none');
+                   }
+                   if(! jQuery('.-selected-').data('date'))
+                   {
+                       alert("يجب اختيار تاريخ اولا   ");
+                   }
+                   if(! $('#name').val() == '' && ! $('#phone').val() == '' && jQuery('.-selected-').data('date') ){
+                       var url = $(this).data("gettime");
+                       $.ajax({
+                           type: "GET",
+                           url: url,
+                           data: {
+                               'day' : jQuery('.-selected-').data('date'),
+                               'month' : jQuery('.-selected-').data('month'),
+                               'year' : jQuery('.-selected-').data('year'),
+                           },
+                           success: function (data) {
+                               $('#exampleModalLabel').modal('show');
+                               $('#result').html(data);
+                           },
+                           error: function (request, error) {
+                                 alert(request);
+                           }
+                       });
                    }
 
-               });
            });
 
            function timeSelected(time){

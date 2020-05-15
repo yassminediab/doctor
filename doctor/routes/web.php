@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'HomeController@index');
 
 Route::post('send/appoinment', 'AppoinmentController@store');
 Route::get('get/time','AppoinmentController@getTime');
