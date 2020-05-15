@@ -53,6 +53,7 @@
 
 .datepicker-inline {
   .datepicker {
+    width:100%;
     border-color: map-get($datepickerBorderColor, inline);
     box-shadow: none;
     position: static;
@@ -90,6 +91,7 @@ $pointerHalfSize: $datepickerPointerSize / 2 - 1;
   z-index: -1;
 
   //  Main axis
+    width:100%;
   // -------------------------
 
   .-top-left- &, .-top-center- &, .-top-right- & {
