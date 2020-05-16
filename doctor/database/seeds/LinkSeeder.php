@@ -12,7 +12,8 @@ class LinkSeeder extends Seeder
     public function run()
     {
         \App\Link::create([
-            'link' => '#'
+            'link' => '#',
+            'title' => 'فوائد واضرار الكريسترول'
         ]);
     }
 }

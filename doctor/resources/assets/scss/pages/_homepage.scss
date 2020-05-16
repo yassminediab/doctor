@@ -79,11 +79,19 @@
 	}
 }
 @media only screen and (min-width: 768px) {
-	.form {
-		.form-box{
-			padding:4.5rem!important;
-		}
-	}
+    .form {
+        .form-box{
+            padding:4.5rem!important;
+        }
+    }
+    .slider{
+        .swiper-slide {
+            img{
+                object-fit: cover;
+                height: 40vh;
+            }
+        }
+    }
 }
 @media only screen and (min-width: 992px) {
 	.form {
@@ -96,7 +104,7 @@
 		}
 	}
 	.service{
-		padding-top: 200rem;
+		padding-top: 200px;
 		padding-bottom: 200px;
     	margin-top: -210px;
   		background-color:#3388B1;
@@ -136,11 +144,26 @@
 				}
 			}
 		}
-		.slider{
-			.swiper-slide {
-			    width: 40%;
-			}
-		}
+        .slider{
+            .swiper-slide {
+                flex-shrink: 0;
+                width: 80%;
+                height: 100%;
+                position: relative;
+                transition-property: transform;
+                .card-text {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+                img{
+                    object-fit: cover;
+                    height: 25vh;
+                }
+            }
+        }
 	}
 	.slider{
 		.text-dark {
@@ -166,9 +189,6 @@
 			}
 		}
 	}
+
 }
 
-
-.card {
-    backgroudn: red !important;
-}

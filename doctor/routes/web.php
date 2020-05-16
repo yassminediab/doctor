@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index');
 
 Route::post('send/appoinment', 'AppoinmentController@store');
 Route::get('get/time','AppoinmentController@getTime');
+Route::get('modelblog/{id}','HomeController@getblogModel');
 
 //ADMIN
 

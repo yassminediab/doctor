@@ -29,6 +29,7 @@
                     .my-modal{
                         width: 80%!important;
                     }
+
                 }
             }
         }
@@ -55,6 +56,13 @@ body{
 	.modal{
 		.modal-dialog{
 			.modal-body{
+                .slider-modal{
+                    img{
+                        width:100%;
+                        object-fit: cover;
+                        height: 40vh;
+                    }
+                }
 				ul{
 					height: 46vh;
     				overflow: auto;

@@ -53,7 +53,7 @@
 
 .datepicker-inline {
   .datepicker {
-    width:100%;
+    width:100% !important;
     border-color: map-get($datepickerBorderColor, inline);
     box-shadow: none;
     position: static;

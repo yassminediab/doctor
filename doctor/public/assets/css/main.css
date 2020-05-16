@@ -421,6 +421,12 @@ footer .social li {
   .form .form-box {
     padding: 4.5rem !important;
   }
+
+  .slider .swiper-slide img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    height: 40vh;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -437,7 +443,7 @@ footer .social li {
   }
 
   .service {
-    padding-top: 200rem;
+    padding-top: 200px;
     padding-bottom: 200px;
     margin-top: -210px;
     background-color: #3388B1;
@@ -484,7 +490,25 @@ footer .social li {
   }
 
   .myvideo .slider .swiper-slide {
-    width: 40%;
+    flex-shrink: 0;
+    width: 80%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+  }
+
+  .myvideo .slider .swiper-slide .card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .myvideo .slider .swiper-slide img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    height: 25vh;
   }
 
   .slider .text-dark {
@@ -512,10 +536,6 @@ footer .social li {
     right: 74px;
     left: auto;
   }
-}
-
-.card {
-  backgroudn: red !important;
 }
 
 .my-modal {
@@ -580,6 +600,13 @@ body .se-pre-con {
   height: 100%;
   z-index: 9999;
   background: url(/images/Preloader_11.gif?018df69b7999b1d2eee80cd3397812da) center no-repeat #fff;
+}
+
+body .modal .modal-dialog .modal-body .slider-modal img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 40vh;
 }
 
 body .modal .modal-dialog .modal-body ul {

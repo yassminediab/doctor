@@ -54,6 +54,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- video-modal -->
             <div class="modal fade" id="exampleModalvideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalvideo" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -68,6 +69,21 @@
                               <source src="assets/img/mov_bbb.mp4" type="video/mp4">
                               <source src="movie.ogg" type="video/ogg">
                             </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body slider-modal" id="blogresult">
+
                         </div>
                     </div>
                 </div>
@@ -146,7 +162,6 @@
                     </div>
                 </section>
             </header>
-
             <!-- form -->
             <section class="form py-4" data-aos="fade-up">
                 <div class="container">
@@ -270,23 +285,25 @@
                 </div>
             </section>
             <!-- slider -->
+
             <section class="slider py-5 text-center">
                 <h6 class="text-dark font-weight-bold mb-3 mb-lg-5">مقالات</h6>
                 <div class="container-fluid position-relative">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             @foreach($blogs as $blog)
-                            <div class="swiper-slide">
-                                <div class="card">
-                                    <img src="{{ asset('images/'.$blog->image) }}" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <p class="card-text" > {{ \Str::limit(Strip_tags($blog->description), $limit = 50, $end = '...')  }}
-                                        </p>
-{{--                                        <a id="blogModel" data-id="{{$blog->id}}" data-blogUrl="{{url('admin/blogs/'.$blog->id)}}">more</a>--}}
-
-                                    </div>
+                                <div class="swiper-slide text-right" >
+                                    <button type="button" class="btn p-0 blogModel"  data-url="{{ url('modelblog/'.$blog->id) }}" >
+                                        <div class="card" >
+                                            <img src="{{ asset('images/'.$blog->image) }}" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="font-weight-bold">  {{$blog->title}}</h5>
+                                                <p class="card-text">{{ \Str::limit(Strip_tags($blog->description), $limit = 50, $end = '...')  }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </button>
                                 </div>
-                            </div>
                            @endforeach
                         </div>
                         <!-- Add Arrows -->
@@ -382,7 +399,8 @@
         </script> -->
         <script>
             // Make Sunday and Saturday disabled
-            var disabledDays = [0, 6];
+            var days = "{{$days}}";
+            var disabledDays = days;
             var d = new Date();
             var currMonth = d.getMonth() ;
             var currYear = d.getFullYear();
@@ -447,21 +465,18 @@
                 }
           </script>
        <script>
-           $("#blogModel").click(function () {
-               var url = $(this).data("blogUrl");
-
+           $(".blogModel").click(function () {
+               var url = $(this).data("url");
+               console.log(url);
                $.ajax({
                    type: "GET",
                    url: url,
-                   data: {
-                       'id' :  $(this).data("id"),
-                   },
                    success: function (data) {
-                       $('#exampleModalLabel').modal('show');
-                       $('#result').html(data);
+                       $('#exampleModal').modal('show');
+                       $('#blogresult').html(data);
                    },
                    error: function (request, error) {
-                       alert(request);
+                       console.log(request);
                    }
                });
            });
@@ -493,7 +508,7 @@
                                $('#result').html(data);
                            },
                            error: function (request, error) {
-                                 alert(request);
+                                 console.log(request);
                            }
                        });
                    }
@@ -524,7 +539,7 @@
                        $('#exampleModalLabel').modal('hide');
                    },
                    error: function (request, error) {
-                       alert(error);
+                       console.log(error);
                    }
 
                });
