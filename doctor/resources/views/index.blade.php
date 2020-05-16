@@ -48,31 +48,28 @@
 
                         </div>
                         <div class="modal-footer border-0">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">رجوع</button>
                             <button type="button" class="btn btn-primary" id="sendAppoinment" data-url="{{ url('send/appoinment') }}">حجز</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">رجوع</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- video-modal -->
-            <div class="modal fade" id="exampleModalvideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalvideo" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header border-0">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body text-center">
-                            <video class="w-100" controls>
-                              <source src="assets/img/mov_bbb.mp4" type="video/mp4">
-                              <source src="movie.ogg" type="video/ogg">
-                            </video>
-                        </div>
+        <div class="modal fade" id="exampleModalvideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalvideo" aria-hidden="true">
+            <div class="modal-dialog h-75" role="document">
+                <div class="modal-content h-100">
+                    <div class="modal-header border-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body h-100 text-center">
+                        <iframe width="100%"  class="h-100" src="{{$link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
+        </div>
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -247,7 +244,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="video-box text-center w-100" data-aos="zoom-in">
-                                <h6 class="text-dark font-weight-bold mb-3 mb-lg-5">فوائد واضرار الكريسترول </h6>
+                                <h6 class="text-dark font-weight-bold mb-3 mb-lg-5">{{$title}}</h6>
                                 <div class="position-relative">
                                     <button class="border-0 p-0" data-toggle="modal" data-target="#exampleModalvideo">
                                         <img src="assets/img/1.png " class="img-fluid video-img" alt="Responsive image">
@@ -257,28 +254,6 @@
                                     </button>
 
                                 </div>
-{{--                                <div class="modal fade" id="exampleModalvideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
-{{--                                      <div class="modal-dialog" role="document">--}}
-{{--                                            <div class="modal-content">--}}
-{{--                                                  <div class="modal-header">--}}
-{{--                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>--}}
-{{--                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                                                          <span aria-hidden="true">&times;</span>--}}
-{{--                                                        </button>--}}
-{{--                                                      </div>--}}
-{{--                                                  <div class="modal-body">--}}
-{{--                                                    ...--}}
-{{--                                                  </div>--}}
-
-{{--                                                  <div class="modal-footer">--}}
-{{--                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
-{{--                                                    <button type="button" class="btn btn-primary">Save changes</button>--}}
-{{--                                                  </div>--}}
-
-{{--                                             </div>--}}
-{{--                                      </div>--}}
-{{--                                </div>--}}
-
                             </div>
                         </div>
                     </div>
@@ -444,6 +419,8 @@
             $(window).load(function() {
               // Animate loader off screen
                $(".se-pre-con").delay(1500).fadeOut(400);
+                $('#sendAppoinment').removeClass('d-none');
+
             });
         </script>
 
@@ -536,7 +513,9 @@
 
                    },
                    success: function (data) {
-                       $('#exampleModalLabel').modal('hide');
+                       document.getElementById("result").innerHTML = "";
+                       $('#result').html(data);
+                       $('#sendAppoinment').addClass('d-none');
                    },
                    error: function (request, error) {
                        console.log(error);

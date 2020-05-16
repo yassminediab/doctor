@@ -101,3 +101,9 @@ body{
 		}
 	}
 }
+.success{
+    svg:not(:root).svg-inline--fa {
+        color: #3389B2;
+        overflow: visible;
+    }
+}

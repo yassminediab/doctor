@@ -22,6 +22,7 @@ class HomeController extends Controller
            'blogs' => Blog::all(),
            'days' => implode(',',$days),
            'link' => Link::urlFormat($link->link),
+            'title' => $link->title
         ]);
     }
 

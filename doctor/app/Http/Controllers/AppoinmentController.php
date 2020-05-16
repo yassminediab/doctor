@@ -29,7 +29,9 @@ class AppoinmentController extends Controller
 
         Mail::to("naguibclinic@gmail.com")->queue(new AppointmentMail($appointment));
 
-        return 1;
+        return view('success',[
+            'appointment' => $appointment
+            ]);
     }
 
 

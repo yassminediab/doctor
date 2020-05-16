@@ -17,8 +17,11 @@
             @foreach($freeTime as $time)
             <a class="nav-link" onclick="timeSelected('{{$time}}')" id="{{$time}}"
                data-toggle="pill" role="tab" aria-controls="v-pills-home" aria-selected="true">
-             mn el sa3a {{explode("-", $time)[1]}}
-                ela  {{explode("-", $time)[0]}}
+              من الساعة
+                {{explode("-", $time)[1]}}
+
+                إلى الساعة
+                {{explode("-", $time)[0]}}
             </a>
             @endforeach
         </div>
