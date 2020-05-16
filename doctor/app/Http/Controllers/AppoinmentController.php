@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Appointment;
 use App\Http\Requests\AppoinmentRequest;
 use App\Mail\AppointmentMail;
-use App\Mail\ContactMail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\AppoinmetSchduale;
@@ -16,7 +15,9 @@ class AppoinmentController extends Controller
     public function store(Request $request)
     {
         $date = Carbon::create($request->year, $request->month, $request->day);
+
         $date->addMonth(1);
+
         $appointment = Appointment::create([
             'name' => $request->name,
             'phone' => $request->phone,
@@ -25,7 +26,8 @@ class AppoinmentController extends Controller
             'time_to' => explode("-", $request->time)[1],
             'time_from' => explode("-", $request->time)[0],
         ]);
-        Mail::to(env('ADMIN_MAIL'))->queue(new AppointmentMail($appointment));
+
+        Mail::to("naguibclinic@gmail.com")->queue(new AppointmentMail($appointment));
 
         return 1;
     }

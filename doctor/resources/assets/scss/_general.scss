@@ -1,4 +1,39 @@
-
+.my-modal{
+    padding-top: 2rem;
+    margin-left: auto;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    box-shadow: 0 5px 23px rgba(0,0,0,.11);
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    padding-bottom: 2rem;
+    a{
+        color: gray;
+        font-size: 0.8rem;
+        border-radius: 50px;
+        font-weight: bold;
+    }
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: black;
+    background-color:#E4E4E4!important;
+    font-size: 0.9rem;
+}
+@media only screen and (min-width: 768px) {
+    body {
+        .modal{
+            .modal-dialog{
+                .modal-body{
+                    .my-modal{
+                        width: 80%!important;
+                    }
+                }
+            }
+        }
+    }
+}
 body{
 	direction: rtl;
     text-align: right;

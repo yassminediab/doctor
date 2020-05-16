@@ -25,6 +25,6 @@ class AppointmentMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.appointment')->subject('New appointment')->from(env('ADMIN_MAIL'))->with('data', $this->data);
+        return $this->markdown('emails.appointment')->subject('New appointment')->from("naguibclinic@gmail.com")->with('data', $this->data);
     }
 }

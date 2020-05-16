@@ -9,9 +9,18 @@
     <li>
         المواعيد المتاحة
     </li>
-    @foreach($freeTime as $time)
-    <li onclick="timeSelected('{{$time}}')">
-        {{$time}}
-    </li>
-   @endforeach
+
+{{--    <li onclick="timeSelected('{{$time}}')">--}}
+{{--        {{$time}}--}}
+{{--    </li>--}}
+        <div class="nav my-modal flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            @foreach($freeTime as $time)
+            <a class="nav-link" onclick="timeSelected('{{$time}}')" id="{{$time}}"
+               data-toggle="pill" role="tab" aria-controls="v-pills-home" aria-selected="true">
+             mn el sa3a {{explode("-", $time)[1]}}
+                ela  {{explode("-", $time)[0]}}
+            </a>
+            @endforeach
+        </div>
+
 </ul>
